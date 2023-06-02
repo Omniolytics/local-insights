@@ -1,0 +1,13 @@
+certifi==2022.12.7
+charset-normalizer==3.1.0
+cloudant==2.15.0
+ibmiotf==0.4.0
+idna==3.4
+iso8601==1.1.0
+paho-mqtt==1.6.1
+pytz==2022.7.1
+PyYAML==6.0
+requests==2.28.2
+requests-toolbelt==0.10.1
+urllib3==1.26.15
+wiotp-sdk==0.11.0
