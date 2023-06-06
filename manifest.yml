@@ -2,7 +2,7 @@
 applications:
   - name: localinsightsapi
     routes:
-      - route: http://local-insights-env-env.eba-apsugwjm.eu-west-2.elasticbeanstalk.com
+      - route: local-insights.eu-gb.mybluemix.net
     instances: 1
     timeout: 180
     buildpack: python_buildpack
