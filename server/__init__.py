@@ -6,8 +6,8 @@ from flask.json import jsonify
 from flask_cors import CORS
 # from flasgger import Swagger
 
-application = Flask(__name__, template_folder="../public", static_folder="../public", static_url_path='')
-app = application
+app = Flask(__name__, template_folder="../public", static_folder="../public", static_url_path='')
+
 credentials = {
     'username': 'f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix',
     'password': """e608b4ab60210ce0f9cf016e6d91efa45d515f3a57a2c2086b670f4cbdf30171""",
