@@ -5,18 +5,5 @@ phases:
       python: 3.9
   pre_build:
     commands:
-      - export DOCKER_IMG_TAG=${REGISTRY}/${IMAGE_BASE_NAME}:${GITHUB_TAG}
-      - export DOCKER_IMG_TAG_LATEST=${REGISTRY}/${IMAGE_BASE_NAME}:${GITHUB_BRANCH}.latest
-      - |-
-        if [ "${GITHUB_TAG}" = "" ] ; then
-          export DOCKER_IMG_TAG=${REGISTRY}/${IMAGE_BASE_NAME}:${GITHUB_BRANCH}.${GITHUB_COMMIT}
-          export GITHUB_TAG=${GITHUB_COMMIT}
-        fi
-      - echo "Building docker image with tags ${DOCKER_IMG_TAG} and ${DOCKER_IMG_TAG_LATEST}"
-      - >
-        docker build
-        --build-arg GIT_HASH="${GITHUB_COMMIT}"
-        --build-arg GIT_BRANCH="${GITHUB_BRANCH}"
-        --build-arg VERSION="${GITHUB_TAG}"
-        --build-arg AUTHOR="CI"
-        -t ${DOCKER_IMG_TAG} -t ${DOCKER_IMG_TAG_LATEST} .
+      - pip install -r requirements.txt
+      - python manage.py
