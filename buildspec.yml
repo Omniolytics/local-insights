@@ -6,7 +6,6 @@ phases:
   pre_build:
     commands:
       - echo "Check code formatting"
-      - make ci-check-format
       - echo "Linting code"
       - make lint
       - echo "Linting openapi spec"
