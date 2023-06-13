@@ -13,11 +13,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y install --no-install-recommends wget swig && rm -rf /var/lib/apt/lists/*
 
-#RUN pip install --upgrade pip \
-#  && pip install --upgrade pipenv\
-#  && pip install -q cython\
-#  && pip install flask-cors\
-#  && pipenv install --system --deploy
+RUN pip install --upgrade pip \
+  && pip install --upgrade pipenv\
+  && pip install -q cython\
+  && pip install flask-cors\
+  && pipenv install --system --deploy
 
 #USER 1001
 COPY requirements.txt /app
