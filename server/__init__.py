@@ -6,8 +6,7 @@ from flask.json import jsonify
 from flask_cors import CORS
 # from flasgger import Swagger
 
-application = Flask(__name__, template_folder="../public", static_folder="../public", static_url_path='')
-
+app = Flask(__name__, template_folder="../public", static_folder="../public", static_url_path='')
 credentials = {
     'username': 'f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix',
     'password': """e608b4ab60210ce0f9cf016e6d91efa45d515f3a57a2c2086b670f4cbdf30171""",
@@ -24,7 +23,7 @@ proxy = {'http': None, 'https': None}
 auth = None
 
 # Enable * for CORS
-CORS(application, resources={r"*": {"origins": "*"}})
+CORS(app, resources={r"*": {"origins": "*"}})
 
 from server.routes import *
 from server.services import *
@@ -60,7 +59,7 @@ def log_error(status, typ):
     db[date] = temp
 
 
-initServices(application)
+initServices(app)
 # app.config['SWAGGER'] = {
 #     'title': 'OmnioFarm Local Insights APIs',
 #     'uiversion': 3
@@ -70,6 +69,6 @@ initServices(application)
 if 'FLASK_LIVE_RELOAD' in os.environ and os.environ['FLASK_LIVE_RELOAD'] == 'true':
     import livereload
 
-    application.debug = True
-    server = livereload.Server(application.wsgi_app)
+    app.debug = True
+    server = livereload.Server(app.wsgi_app)
     server.serve(port=os.environ['port'], host=os.environ['host'])

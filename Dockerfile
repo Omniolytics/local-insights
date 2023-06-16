@@ -1,29 +1,30 @@
-Sure! I can help you create a Dockerfile for a Flask app. Flask is a popular Python web framework, and Docker allows you to containerize your application for easy deployment and portability.
+FROM python:3.6
+#FROM registry.access.redhat.com/ubi8/python-36
+#FROM registry.access.redhat.com/ubi8
 
-Here's an example of a Dockerfile for a Flask app:
-
-dockerfile
-Copy code
-# Use an official Python runtime as the base image
-FROM python:3.9-slim
-
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file to the working directory
-COPY requirements.txt .
+#COPY Pipfile* /app/
 
-# Install the Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+## NOTE - rhel enforces user container permissions stronger ##
+#USER root
+RUN export DEBIAN_FRONTEND="noninteractive"
+ENV DEBIAN_FRONTEND noninteractive
 
-# Copy the application code to the container
-COPY . .
+RUN apt-get update && apt-get -y install --no-install-recommends wget swig && rm -rf /var/lib/apt/lists/*
 
-# Set the environment variable for Flask
-ENV FLASK_APP=app.py
+RUN pip install --upgrade pip \
+  && pip install --upgrade pipenv\
+  && pip install -q cython\
+  && pip install flask-cors\
+  && pipenv install --system --deploy
 
-# Expose the port on which the Flask app will run
-EXPOSE 5000
+#USER 1001
+COPY requirements.txt /app
 
-# Run the Flask app
-CMD ["flask", "run", "--host=0.0.0.0"]
+RUN pip install -r requirements.txt
+
+#COPY . /app
+ENV FLASK_APP=server/__init__.py
+EXPOSE 3000
+CMD ["python3", "manage.py", "start", "0.0.0.0:3000"]
