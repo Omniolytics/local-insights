@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9
 #FROM registry.access.redhat.com/ubi8/python-36
 #FROM registry.access.redhat.com/ubi8
 
