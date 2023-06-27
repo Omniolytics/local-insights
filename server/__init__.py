@@ -8,9 +8,9 @@ from flask_cors import CORS
 
 app = Flask(__name__, template_folder="../public", static_folder="../public", static_url_path='')
 credentials = {
-    'username': 'f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix',
-    'password': """e608b4ab60210ce0f9cf016e6d91efa45d515f3a57a2c2086b670f4cbdf30171""",
-    'custom_url': 'https://f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix:e608b4ab60210ce0f9cf016e6d91efa45d515f3a57a2c2086b670f4cbdf30171@f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix.cloudantnosqldb.appdomain.cloud',
+    'username': 'apikey-v2-2ibs85wd6tef6n56oe5s8wugn9cog9r21akgg5515vdp',
+    'password': '3a8350a3f76119441b1209359a576878',
+    'custom_url': 'https://apikey-v2-2ibs85wd6tef6n56oe5s8wugn9cog9r21akgg5515vdp:3a8350a3f76119441b1209359a576878@c4583613-aaf0-4b6f-a936-8aaac98db589-bluemix.cloudantnosqldb.appdomain.cloud',
     'strain-list': '/chicken-strain/_design/strain/_view/list',
     'hist-list': '/historical/_design/hist/_view/list',
     'port': '50000',
