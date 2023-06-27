@@ -20,11 +20,11 @@ RUN apt-get update && apt-get -y install --no-install-recommends wget swig && rm
   #&& pipenv install --system --deploy
 
 #USER 1001
-COPY requirements.txt /app
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-#COPY . /app
+COPY . .
 ENV FLASK_APP=server/__init__.py
 EXPOSE 3000
 CMD ["python3", "manage.py", "start", "0.0.0.0:3000"]
