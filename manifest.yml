@@ -2,7 +2,7 @@
 applications:
 - name: localinsightsapi
   routes:
-  - route: local-insights.eu-gb.mybluemix.net
+  - route: https://app.142fr8effozd.eu-gb.codeengine.appdomain.cloud
   instances: 1
   timeout: 180
   buildpack: python_buildpack
