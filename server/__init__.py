@@ -23,7 +23,7 @@ proxy = {'http': None, 'https': None}
 auth = None
 
 # Enable * for CORS
-#CORS(app, resources={r"*": {"origins": "*"}})
+CORS(app, resources={r"*": {"origins": "*"}})
 
 from server.routes import *
 from server.services import *
