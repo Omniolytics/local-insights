@@ -29,10 +29,8 @@ def timezone_info(timezone):
 
 class Darkperiod:
     def __init__(self):
-        self.iqrf_daily = "https://de7ece9a-7cfc-4e0c-8081-b24cbff85f51-bluemix:e7e8b60e9e2931c0ab23d016d3620192e5590" \
-                          "7da8da44530e8d723cc4b141a34@de7ece9a-7cfc-4e0c-8081-b24cbff85f51-bluemix.cloudantnosqldb." \
-                          "appdomain.cloud"
-        self.couch = connect_db(self.iqrf_daily)
+        self.cloudant_iot_daily = "https://apikey-v2-1z2xwumlg93v9t248zmu7iumx2r9vod28q6m6lrybx3e:c9f45cf5d30ee7d09b635b7aa2ead6f1@f3fd4444-63fe-4117-8dad-6dfe6220c3e1-bluemix.cloudantnosqldb.appdomain.cloud"
+        self.couch = connect_db(self.cloudant_iot_daily)
         self.current_date = None
         self.device_id = None
         self.timezone = None
@@ -42,7 +40,7 @@ class Darkperiod:
             self.current_date = current_date
             self.device_id = device_id
             self.timezone = timezone
-            db = self.couch[f'iotp_tk95td_default2_{self.current_date}']
+            db = self.couch[f'iotp_ufeqt5_cloudant_{self.current_date}']
             docs1 = db.view("iotp/by-date", include_docs=False)
             month = []
             try:
@@ -70,7 +68,7 @@ class Darkperiod:
             df1 = df1.sort_values(by='timestamp')
             if df1.iloc[0]['Lux'] == 0:  # if dark period started yesterday
                 prev_day = (pd.to_datetime(self.current_date) - dt.timedelta(days=1)).date().isoformat()
-                db = self.couch[f'iotp_tk95td_default2_{prev_day}']
+                db = self.couch[f'iotp_ufeqt5_cloudant_{prev_day}']
                 docs3 = db.view("iotp/by-date", include_docs=False)
                 month = []
                 try:
@@ -109,7 +107,7 @@ class Darkperiod:
                 next_day = (pd.to_datetime(self.current_date) + dt.timedelta(days=1)).date().isoformat()
 
                 print(f'next day is: {next_day}')
-                db = self.couch[f'iotp_tk95td_default2_{next_day}']
+                db = self.couch[f'iotp_ufeqt5_cloudant_{next_day}']
                 docs2 = db.view("iotp/by-date", include_docs=False)
                 month = []
                 try:
