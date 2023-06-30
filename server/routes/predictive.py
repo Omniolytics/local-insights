@@ -79,9 +79,7 @@ class MortalityPredictions:
 
     def _load_historic_mort(self):
 
-        db_url_yml = "https://f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix" \
-                     ":e608b4ab60210ce0f9cf016e6d91efa45d515f3a57a2c2086b670f4cbdf30171@f0d0d29c-7c5c-4212-9e05-6aa455b05adc" \
-                     "-bluemix.cloudantnosqldb.appdomain.cloud"
+        db_url_yml = "https://apikey-v2-2ibs85wd6tef6n56oe5s8wugn9cog9r21akgg5515vdp:3a8350a3f76119441b1209359a576878@c4583613-aaf0-4b6f-a936-8aaac98db589-bluemix.cloudantnosqldb.appdomain.cloud"
         couch = couchdb.Server(db_url_yml)
         the_cycles = {}
         if 'historical' not in couch:
@@ -399,9 +397,7 @@ class GrowthPredictions:
 
     def _load_historic_growth(self):
 
-        db_url_yml = "https://f0d0d29c-7c5c-4212-9e05-6aa455b05adc-bluemix" \
-                     ":e608b4ab60210ce0f9cf016e6d91efa45d515f3a57a2c2086b670f4cbdf30171@f0d0d29c-7c5c-4212-9e05-6aa455b05adc" \
-                     "-bluemix.cloudantnosqldb.appdomain.cloud"
+        db_url_yml = "https://apikey-v2-2ibs85wd6tef6n56oe5s8wugn9cog9r21akgg5515vdp:3a8350a3f76119441b1209359a576878@c4583613-aaf0-4b6f-a936-8aaac98db589-bluemix.cloudantnosqldb.appdomain.cloud"
         couch = couchdb.Server(db_url_yml)
         the_cycles = {}
         if 'historical' not in couch:
