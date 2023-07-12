@@ -550,10 +550,10 @@ class Practice:
                 for j in i['tbl_DeviceDataDetail']:
                     broiler_devices.add(j['deviceID'])
 
-        k = {i: requests.get(f'{self.base}/getLatestRaw/{i}') for i in broiler_devices}
+        k = {i: requests.get(f'{self.base}/getLatest/{i}') for i in broiler_devices}
         for i in k:
             if k[i].status_code != 200:
-                status = {"status": 400, "message": "Could not get getLatestRaw/" + i}
+                status = {"status": 400, "new message": "Could not get getLatest/" + i}
                 return status
         for j in k:
             temp = k[j].json()
